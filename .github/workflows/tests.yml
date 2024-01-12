@@ -133,9 +133,17 @@ jobs:
       if: |
         steps.cli-cache.outputs.cache-hit != 'true' ||
         steps.rust-cache.outputs.cache-hit != 'true' ||
+        steps.parsers-cache.outputs.cache-hit != 'true' ||
+        steps.postgres-cache.outputs.cache-hit != 'true' ||
+        steps.stolon-cache.outputs.cache-hit != 'true' ||
+        steps.parssetuptoolsdrs-cache.outputs.cache-hit != 'true'
+      run: |
+        <package_manager> update
+        <package_manager> install -y uuid-dev libreadline-dev bison flex
         steps.ext-cache.outputs.cache-hit != 'true' ||
         steps.stolon-cache.outputs.cache-hit != 'true' ||
-        steps.postgres-cache.outputs.cache-hit != 'true'
+        steps.postgres-cache.outputs.cache-hit != 'true' ||
+        steps.parsers-cache.outputs.cache-hit != 'true'
       run: |
         sudo apt-get update
         sudo apt-get install -y uuid-dev libreadline-dev bison flex
