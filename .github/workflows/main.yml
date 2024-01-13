@@ -1,0 +1,38 @@
+The contents of the updated ".github/workflows/main.yml" file will depend on the specific problem identified in the error logs. Since the error logs are not provided, I will provide a general template for a GitHub Actions workflow file:
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
+
+This is a basic template for a GitHub Actions workflow file that sets up a Python environment, installs dependencies, and runs tests using pytest. You will need to modify this template based on the specific requirements of your project.
+
+Remember to replace "requirements.txt" with the correct file name if your project uses a different dependency file.
+
+Commit message: "feat/fix: Update GitHub Actions workflow file to fix failing run"
